@@ -1,0 +1,42 @@
+---
+import { services } from '../../config/company';
+
+const featuredServices = services.slice(0, 6);
+---
+
+<section class="section-padding">
+  <div class="container-page">
+    <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <div class="lg:sticky lg:top-24">
+        <p class="text-sm font-bold uppercase tracking-[0.32em] text-orange-200">
+          What We Build
+        </p>
+
+        <h2 class="mt-5 max-w-xl text-3xl font-black tracking-tight text-white sm:text-4xl">
+          Digital foundations for businesses that need more than a basic online presence.
+        </h2>
+
+        <p class="mt-5 max-w-xl text-base leading-8 text-orange-50/65">
+          Nova focuses on practical digital delivery: clear structure, professional interface,
+          reliable implementation, and release-ready execution.
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {featuredServices.map((service, index) => (
+          <article class={`rounded-[2rem] border border-white/12 bg-white/[0.07] p-6 shadow-soft backdrop-blur-xl ${index === 0 || index === 3 ? 'sm:translate-y-8' : ''}`}>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black uppercase tracking-[0.25em] text-orange-200/80">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="h-2 w-2 rounded-full bg-brand-300"></span>
+            </div>
+
+            <h3 class="mt-8 text-xl font-black text-white">{service.title}</h3>
+            <p class="mt-4 text-sm leading-7 text-orange-50/60">{service.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
