@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 12%, rgba(249, 115, 22, 0.34), transparent 24rem),
+    radial-gradient(circle at 80% 14%, rgba(244, 63, 94, 0.26), transparent 26rem),
+    radial-gradient(circle at 50% 88%, rgba(139, 92, 246, 0.18), transparent 34rem),
+    linear-gradient(145deg, #431407 0%, #1e1b4b 42%, #020617 100%);
+  z-index: -3;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 30%, transparent 0 9rem, rgba(255, 255, 255, 0.055) 9.1rem, transparent 9.25rem),
+    radial-gradient(circle at 50% 30%, transparent 0 16rem, rgba(251, 146, 60, 0.055) 16.1rem, transparent 16.25rem),
+    radial-gradient(circle at 50% 30%, transparent 0 24rem, rgba(251, 113, 133, 0.05) 24.1rem, transparent 24.25rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 45%, rgba(255, 255, 255, 0.02));
+  background-position: center top;
+  mask-image: linear-gradient(to bottom, black, black 62%, transparent 100%);
+  z-index: -2;
+}
+
+.site-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.site-ambient::before,
+.site-ambient::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(46px);
+  opacity: 0.34;
+}
+
+.site-ambient::before {
+  width: 24rem;
+  height: 24rem;
+  left: -9rem;
+  top: 20rem;
+  background: rgba(249, 115, 22, 0.34);
+}
+
+.site-ambient::after {
+  width: 28rem;
+  height: 28rem;
+  right: -12rem;
+  bottom: 4rem;
+  background: rgba(244, 63, 94, 0.28);
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-padding {
+  @apply py-20 sm:py-24;
+}
+
+.card-glass {
+  @apply rounded-3xl border border-white/15 bg-white/[0.08] shadow-soft backdrop-blur-xl;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+::selection {
+  @apply bg-brand-300 text-slate-950;
+}

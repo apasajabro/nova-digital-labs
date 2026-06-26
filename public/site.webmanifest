@@ -1,0 +1,16 @@
+{
+  "name": "PT Nova Digital Labs",
+  "short_name": "Nova Digital",
+  "description": "Professional software, web, and digital solution studio.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#431407",
+  "theme_color": "#431407",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}
