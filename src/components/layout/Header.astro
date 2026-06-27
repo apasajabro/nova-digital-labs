@@ -1,22 +1,30 @@
 ---
-import { company, navigation } from '@/config/company';
+import { company, navigation } from '../../config/company';
 ---
 
 <header class="sticky top-0 z-50 border-b border-white/15 bg-orange-950/70 backdrop-blur-xl">
   <div class="container-page flex h-20 items-center justify-between">
     <a href="/" class="flex items-center gap-3" aria-label={`${company.legalName} Home`}>
       <span class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-brand-300 to-accent-500 font-bold text-slate-950 shadow-lg shadow-brand-400/25">
-        NS
+        ND
       </span>
+
       <span class="leading-tight">
-        <strong class="block text-sm font-semibold tracking-wide text-white">{company.name}</strong>
-        <small class="text-xs text-orange-100/75">{company.shortTagline}</small>
+        <strong class="block text-sm font-semibold tracking-wide text-white">
+          {company.name}
+        </strong>
+        <small class="text-xs text-orange-100/75">
+          {company.shortTagline}
+        </small>
       </span>
     </a>
 
     <nav class="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
       {navigation.map((item) => (
-        <a class="text-sm font-medium text-orange-50/80 transition hover:text-white" href={item.href}>
+        <a
+          class="text-sm font-medium text-orange-50/80 transition hover:text-white"
+          href={item.href}
+        >
           {item.label}
         </a>
       ))}
@@ -49,9 +57,9 @@ import { company, navigation } from '@/config/company';
         stroke-width="2"
         stroke-linecap="round"
       >
-        <path d="M4 7h16" />
-        <path d="M4 12h16" />
-        <path d="M4 17h16" />
+        <path d="M4 7h16"></path>
+        <path d="M4 12h16"></path>
+        <path d="M4 17h16"></path>
       </svg>
 
       <svg
@@ -64,8 +72,8 @@ import { company, navigation } from '@/config/company';
         stroke-width="2"
         stroke-linecap="round"
       >
-        <path d="M6 6l12 12" />
-        <path d="M18 6L6 18" />
+        <path d="M6 6l12 12"></path>
+        <path d="M18 6L6 18"></path>
       </svg>
     </button>
   </div>
@@ -92,34 +100,39 @@ import { company, navigation } from '@/config/company';
 </header>
 
 <script>
-  const button = document.getElementById('mobileMenuButton');
-  const menu = document.getElementById('mobileMenu');
-  const openIcon = document.getElementById('mobileMenuOpenIcon');
-  const closeIcon = document.getElementById('mobileMenuCloseIcon');
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuOpenIcon = document.getElementById('mobileMenuOpenIcon');
+  const mobileMenuCloseIcon = document.getElementById('mobileMenuCloseIcon');
 
-  const setMenuState = (isOpen: boolean) => {
-    if (!button || !menu || !openIcon || !closeIcon) return;
+  const setMobileMenuState = (isOpen: boolean) => {
+    if (!mobileMenuButton || !mobileMenu || !mobileMenuOpenIcon || !mobileMenuCloseIcon) {
+      return;
+    }
 
-    button.setAttribute('aria-expanded', String(isOpen));
-    button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    mobileMenuButton.setAttribute('aria-expanded', String(isOpen));
+    mobileMenuButton.setAttribute(
+      'aria-label',
+      isOpen ? 'Close navigation menu' : 'Open navigation menu'
+    );
 
-    menu.classList.toggle('hidden', !isOpen);
-    openIcon.classList.toggle('hidden', isOpen);
-    closeIcon.classList.toggle('hidden', !isOpen);
+    mobileMenu.classList.toggle('hidden', !isOpen);
+    mobileMenuOpenIcon.classList.toggle('hidden', isOpen);
+    mobileMenuCloseIcon.classList.toggle('hidden', !isOpen);
   };
 
-  button?.addEventListener('click', () => {
-    const isOpen = button.getAttribute('aria-expanded') === 'true';
-    setMenuState(!isOpen);
+  mobileMenuButton?.addEventListener('click', () => {
+    const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    setMobileMenuState(!isOpen);
   });
 
-  menu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => setMenuState(false));
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMobileMenuState(false));
   });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
-      setMenuState(false);
+      setMobileMenuState(false);
     }
   });
 </script>
