@@ -18,7 +18,7 @@ const hasGoogleAnalytics = cleanGaMeasurementId.length > 0;
 
 {hasGoogleAnalytics && (
   <>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${cleanGaMeasurementId}`}></script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${cleanGaMeasurementId}`}></script>
     <script is:inline define:vars={{ gaMeasurementId: cleanGaMeasurementId }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
